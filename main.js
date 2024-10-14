@@ -199,8 +199,8 @@ function editSelectOption(index, optIndex, newOption) {
 }
 
 function addSelectOption(index) {
-  var optIndex = formData[index].options.length - 1;
-  var newOption = `<div class="d-flex align-items-center mt-1" id="selectBox_"+index+"_editOptions_"+optIndex>
+  var optIndex = formData[index].options.length;
+  var newOption = `<div class="d-flex align-items-center mt-1" id="selectBox_${index}_editOptions_${optIndex}">
             <input type="text" class="form-control" value="New Sample Option" oninput="editSelectOption(${index},${optIndex}, this.value)" />
             <span class="ms-2" onclick="deleteSelectOption(${index}, ${optIndex})"><i class="bi bi-trash3"></i></span>
           </div>`;
@@ -229,7 +229,6 @@ function toggleEdit(index) {
   }
 
   formControls.forEach(control => control.classList.toggle('d-none'));
-debugger
   if (editBtn.classList.contains('bi-pencil-square')) {
     editBtn.classList.remove('bi-pencil-square');
     editBtn.classList.add('bi-check-lg');
