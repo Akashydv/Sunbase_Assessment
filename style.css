@@ -1,0 +1,24 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f5f5f5;
+}
+
+.drag-handle {
+  cursor: move;
+  margin-right: 10px;
+  color: #333;
+}
+
+.cursor-pointer{
+  cursor: pointer;
+}
+
+.cursor-text{
+  cursor: text;
+}
+
+.form-group label{
+  padding:3px 10px;
+}
