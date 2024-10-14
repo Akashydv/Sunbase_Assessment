@@ -151,7 +151,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
       draggables.forEach(draggable => {
           draggable.addEventListener('dragstart', (e) => {
-            debugger
               e.dataTransfer.setData('text/plain', e.target.dataset.index);
           });
 
@@ -199,6 +198,7 @@ function editSelectOption(index, optIndex, newOption) {
 }
 
 function addSelectOption(index) {
+  formData[index].options.push('New Sample Option')
   var optIndex = formData[index].options.length;
   var newOption = `<div class="d-flex align-items-center mt-1" id="selectBox_${index}_editOptions_${optIndex}">
             <input type="text" class="form-control" value="New Sample Option" oninput="editSelectOption(${index},${optIndex}, this.value)" />
