@@ -72,7 +72,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function addNewFormField(type){
-    debugger
     let inputField;
     const form = document.getElementById('customise_form');  
     let index = formData.length;
@@ -138,10 +137,8 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function deleteFormField (index,id) {
-    debugger
     formData.splice(index, 1);
     document.getElementById(id).remove();
-
   }
 
   function saveForm(){
@@ -196,12 +193,10 @@ function editPlaceholder(index, newPlaceholder) {
 }
 
 function editSelectOption(index, optIndex, newOption) {
-  debugger
   formData[index].options[optIndex] = newOption;
 }
 
 function addSelectOption(index) {
-  debugger
   formData[index].options.push('New Sample Option')
   var optIndex = formData[index].options.length - 1;
   var newOption = `<div class="d-flex align-items-center mt-1" id="selectBox_${index}_editOptions_${optIndex}">
