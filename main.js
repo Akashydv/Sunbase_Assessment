@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <textarea class="form-control" rows="3" placeholder="${data.placeholder}"></textarea>`;
     }
 
-        const formGroup =   `<div class="mb-4 form-group" draggable="true" data-index="${index}" id="${data.id}">
+        const formGroup =   `<div class="mb-4 form-group field-mainDiv" draggable="true" data-index="${index}" id="${data.id}">
             ${label}
             <div class="float-end">
             <span class="cursor-pointer me-2" title="Edit" onclick="toggleEdit(${index})" id="edit-btn-${index}"><i class="bi bi-pencil-square"></i></span>
@@ -118,7 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <textarea class="form-control" rows="3" placeholder="${formData[index].placeholder}"></textarea>`;
     }
           const formGroup = document.createElement('div');
-          formGroup.classList.add('mb-4', 'form-group');
+          formGroup.classList.add('mb-4', 'form-group', 'field-mainDiv');
           formGroup.setAttribute('draggable', true);
           formGroup.setAttribute('data-index', index);
           formGroup.setAttribute('id', formData[index].id);
@@ -134,9 +134,11 @@ document.addEventListener('DOMContentLoaded', () => {
           `;
         
           form.appendChild(formGroup);
+          addDragAndDrop();
   }
 
   function deleteFormField (index,id) {
+    debugger
     formData.splice(index, 1);
     document.getElementById(id).remove();
 
@@ -147,7 +149,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function addDragAndDrop() {
-      const draggables = document.querySelectorAll('.form-group');
+      const draggables = document.querySelectorAll('.field-mainDiv');
 
       draggables.forEach(draggable => {
           draggable.addEventListener('dragstart', (e) => {
@@ -194,12 +196,14 @@ function editPlaceholder(index, newPlaceholder) {
 }
 
 function editSelectOption(index, optIndex, newOption) {
+  debugger
   formData[index].options[optIndex] = newOption;
 }
 
 function addSelectOption(index) {
+  debugger
   formData[index].options.push('New Sample Option')
-  var optIndex = formData[index].options.length;
+  var optIndex = formData[index].options.length - 1;
   var newOption = `<div class="d-flex align-items-center mt-1" id="selectBox_${index}_editOptions_${optIndex}">
             <input type="text" class="form-control" value="New Sample Option" oninput="editSelectOption(${index},${optIndex}, this.value)" />
             <span class="ms-2" onclick="deleteSelectOption(${index}, ${optIndex})"><i class="bi bi-trash3"></i></span>
